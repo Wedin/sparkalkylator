@@ -1,0 +1,15 @@
+import React from 'react';
+import Intro from '../components/intro';
+import Layout from '../components/layout';
+import SavingsCalculator from '../components/savingsCalculator/savingsCalculator';
+
+export default class extends React.PureComponent {
+  render() {
+    return (
+      <Layout title="Sparkalkylatorn">
+        <Intro />
+        <SavingsCalculator />
+      </Layout>
+    );
+  }
+}

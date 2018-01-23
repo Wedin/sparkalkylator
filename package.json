@@ -1,0 +1,39 @@
+{
+  "name": "sparkalkylator",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "next",
+    "prettier": "prettier  --config ./.prettierrc '{app,components,utils,pages,__{tests}__}/**/*.js' --write",
+    "lint": "eslint --fix --ext js pages components utils __tests__",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-eslint": "^8.0.1",
+    "next": "^3.2.2",
+    "prop-types": "^15.6.0",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "recharts": "^1.0.0-alpha.6"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.2.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.4.0",
+    "jest": "^21.2.1",
+    "prettier": "^1.7.4"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
