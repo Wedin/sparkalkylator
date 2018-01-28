@@ -6,11 +6,10 @@ export default class Button extends React.Component {
     className: PropTypes.string,
     type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired,
   };
   static defaultProps = {
     className: '',
-    label: ''
   };
 
   render() {

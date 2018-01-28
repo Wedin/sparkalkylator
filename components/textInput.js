@@ -17,47 +17,41 @@ export default class TextInput extends React.Component {
     return (
       <div className={this.props.className ? `${this.props.className} container` : 'container'}>
         <label htmlFor={this.props.name}>{this.props.label}</label>
-        <input
-          id={this.props.name}
-          type="number"
-          name={this.props.name}
-          value={this.props.value}
-          placeholder={this.props.placeholder}
-          step={this.props.step}
-          onChange={this.onChange}
-        />
-        <style jsx>{`
-          .container {
-            margin-top: 20px;
-            display: inline-block;
-            width: 50%;
-          }
-          input {
-            padding: 14px;
-            height: 50px;
-            background-color: #f8f8f8;
-            border: 1px solid #dfdfdf;
-            border-radius: 2px;
-            background-image: none;
-            background-clip: padding-box;
-            transition: background-color 0.25s ease;
-            margin-top: 7px;
-            display: block;
-            font-size: 1rem;
-            min-width: 220px;
-            width: 100%;
-          }
+        <input id={this.props.name} type="number" name={this.props.name} value={this.props.value} placeholder={this.props.placeholder} step={this.props.step} onChange={this.onChange} />
+        <style jsx>
+          {`
+            .container {
+              margin-top: 20px;
+              display: inline-block;
+              width: 50%;
+            }
+            input {
+              padding: 14px;
+              height: 50px;
+              background-color: #f8f8f8;
+              border: 1px solid #dfdfdf;
+              border-radius: 2px;
+              background-image: none;
+              background-clip: padding-box;
+              transition: background-color 0.25s ease;
+              margin-top: 7px;
+              display: block;
+              font-size: 1rem;
+              min-width: 220px;
+              width: 100%;
+            }
 
-          input:hover,
-          input:focus {
-            background-color: #eaeaea;
-            outline: none;
-          }
+            input:hover,
+            input:focus {
+              background-color: #eaeaea;
+              outline: none;
+            }
 
-          label {
-            display: inline-block;
-          }
-        `}</style>
+            label {
+              display: inline-block;
+            }
+          `}
+        </style>
       </div>
     );
   }
@@ -70,10 +64,10 @@ TextInput.propTypes = {
   value: PropTypes.any.isRequired,
   onChange: PropTypes.func.isRequired,
   step: PropTypes.number.isRequired,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
 };
 
 TextInput.defaultProps = {
   className: '',
-  placeholder: ''
+  placeholder: '',
 };

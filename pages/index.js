@@ -4,6 +4,7 @@ import Layout from '../components/layout';
 import SavingsCalculator from '../components/savingsCalculator/savingsCalculator';
 
 export default class extends React.PureComponent {
+  displayName = 'Index';
   render() {
     return (
       <Layout title="Sparkalkylatorn">

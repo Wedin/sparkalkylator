@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default class extends React.Component {
+  displayName = 'Intro';
   render() {
     return (
       <div className="intro">
@@ -10,27 +11,29 @@ export default class extends React.Component {
 
           <p>Ränta på räntaeffekter ger långsiktigt en snöbollseffekt och ser till att dina pengar ökar kraftigt - om du sparar länge.</p>
         </div>
-        <style jsx>{`
-          .intro {
-            padding-top: 120px;
-          }
-
-          .intro__inner {
-            margin: 0 auto;
-          }
-
-          @media (min-width: 600px) {
-            .intro__inner {
-              max-width: 720px;
+        <style jsx>
+          {`
+            .intro {
+              padding-top: 120px;
             }
-          }
 
-          @media (min-width: 1080px) {
             .intro__inner {
-              max-width: 800px;
+              margin: 0 auto;
             }
-          }
-        `}</style>
+
+            @media (min-width: 600px) {
+              .intro__inner {
+                max-width: 720px;
+              }
+            }
+
+            @media (min-width: 1080px) {
+              .intro__inner {
+                max-width: 800px;
+              }
+            }
+          `}
+        </style>
       </div>
     );
   }

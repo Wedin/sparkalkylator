@@ -7,7 +7,7 @@
     "test": "jest",
     "dev": "next",
     "prettier": "prettier  --config ./.prettierrc '{app,components,utils,pages,__{tests}__}/**/*.js' --write",
-    "lint": "eslint --fix --ext js pages components utils __tests__",
+    "lint": "eslint . --fix --ext .js",
     "build": "next build",
     "start": "next start"
   },
@@ -27,10 +27,10 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jest": "^21.7.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.5.0",
-    "eslint-plugin-react": "^7.5.1",
-    "jest": "^21.2.1",
+    "eslint-plugin-react": "^7.6.0",
+    "jest": "^22.1.4",
     "prettier": "^1.10.2"
   },
   "jest": {

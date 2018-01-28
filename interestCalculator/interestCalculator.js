@@ -36,7 +36,7 @@ export default class {
       startCapital: parseInt(startCapital, 10),
       monthlyDeposit: parseInt(monthlyDeposit, 10),
       interestRate: parseFloat(interestRate),
-      years: parseInt(years, 10)
+      years: parseInt(years, 10),
     };
   }
 
@@ -63,7 +63,7 @@ export default class {
 
     return {
       total: returns,
-      yield: returns - returnsWithoutInterest
+      yield: returns - returnsWithoutInterest,
     };
   }
 
@@ -84,7 +84,7 @@ export default class {
         monthlyDeposit,
         years,
         startCapital,
-        totalCapital: newCapital
+        totalCapital: newCapital,
       },
       nextYear,
       newAcc
@@ -100,16 +100,16 @@ export default class {
     const newInput = {
       ...validatedInput,
       interestRate: validatedInput.interestRate / 100,
-      totalCapital: startCapital
+      totalCapital: startCapital,
     };
     return {
       totals: this.calculatePerYearFn(newInput, 0, [
         {
           year: 0,
           value: validatedInput.startCapital,
-          deposited: validatedInput.startCapital
-        }
-      ])
+          deposited: validatedInput.startCapital,
+        },
+      ]),
     };
   }
 }

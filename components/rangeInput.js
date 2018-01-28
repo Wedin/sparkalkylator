@@ -29,55 +29,57 @@ export default class RangeInput extends React.Component {
         />
         {this.props.labelAfter.length > 0 && <span className="after-label">{this.props.labelAfter}</span>}
         <span />
-        <style jsx>{`
-          .container {
-            margin-top: 1.25rem;
-            display: inline-flex;
-            align-items: center;
-            flex-wrap: wrap;
-            width: 50%;
-          }
-          input {
-            padding: 1rem;
-            background-color: #f8f8f8;
-            border: 1px solid #dfdfdf;
-            border-radius: 2px;
-            height: 50px;
-            background-image: none;
-            background-clip: padding-box;
-            transition: background-color 0.25s ease;
-            margin-top: 0.5rem;
-            display: inline-block;
-            font-size: 1rem;
-          }
-          .rangeInput {
-            padding: 1rem 0;
-            margin: 0.5rem 0 0 0;
-            border: 0;
-            width: calc(100% - 145px);
-          }
+        <style jsx>
+          {`
+            .container {
+              margin-top: 1.25rem;
+              display: inline-flex;
+              align-items: center;
+              flex-wrap: wrap;
+              width: 50%;
+            }
+            input {
+              padding: 1rem;
+              background-color: #f8f8f8;
+              border: 1px solid #dfdfdf;
+              border-radius: 2px;
+              height: 50px;
+              background-image: none;
+              background-clip: padding-box;
+              transition: background-color 0.25s ease;
+              margin-top: 0.5rem;
+              display: inline-block;
+              font-size: 1rem;
+            }
+            .rangeInput {
+              padding: 1rem 0;
+              margin: 0.5rem 0 0 0;
+              border: 0;
+              width: calc(100% - 145px);
+            }
 
-          .text-input {
-            margin-left: 1rem;
-            max-width: 105px;
-            padding-right: 0.5rem;
-          }
+            .text-input {
+              margin-left: 1rem;
+              max-width: 105px;
+              padding-right: 0.5rem;
+            }
 
-          input:hover,
-          input:focus {
-            background-color: #eaeaea;
-            outline: none;
-          }
+            input:hover,
+            input:focus {
+              background-color: #eaeaea;
+              outline: none;
+            }
 
-          label {
-            display: block;
-            width: 100%;
-          }
-          .after-label {
-            padding: 1rem 0 1rem 0.375rem;
-            margin-top: 0.5rem;
-          }
-        `}</style>
+            label {
+              display: block;
+              width: 100%;
+            }
+            .after-label {
+              padding: 1rem 0 1rem 0.375rem;
+              margin-top: 0.5rem;
+            }
+          `}
+        </style>
       </div>
     );
   }
@@ -93,10 +95,11 @@ RangeInput.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   placeholder: PropTypes.string,
-  labelAfter: PropTypes.string
+  labelAfter: PropTypes.string,
 };
 
 RangeInput.defaultProps = {
   className: '',
-  placeholder: ''
+  placeholder: '',
+  labelAfter: '',
 };

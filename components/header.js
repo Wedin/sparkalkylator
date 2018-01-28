@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 export default class extends React.Component {
+  displayName = 'Header';
   render() {
     return (
       <div className="header">
@@ -23,7 +24,8 @@ export default class extends React.Component {
             </li>
           </ul>
         </nav>
-        <style jsx>{`
+        <style jsx>
+          {`
           .header {
             width: 100%
             border-bottom: 1px solid #e5e5e5;
@@ -69,7 +71,8 @@ export default class extends React.Component {
           justify-content: flex-end;
           display: flex;
         }
-        `}</style>
+        `}
+        </style>
       </div>
     );
   }

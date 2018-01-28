@@ -27,13 +27,13 @@ test('Parses input correctly', () => {
       startCapital: '1000000',
       monthlyDeposit: '1000',
       interestRate: '8.2',
-      years: '10'
+      years: '10',
     })
   ).toEqual({
     startCapital: 1000000,
     monthlyDeposit: 1000,
     interestRate: 8.2,
-    years: 10
+    years: 10,
   });
 });
 
@@ -43,7 +43,7 @@ test('Handle parse of incorrect input', () => {
       startCapital: '1000000',
       monthlyDeposit: 'asdf',
       interestRate: '8.2',
-      years: '10'
+      years: '10',
     })
   ).toEqual({});
 });
@@ -83,7 +83,7 @@ describe('Correct compund interest', () => {
       startCapital: 5000,
       monthlyDeposit: 100,
       interestRate: 5,
-      years: 10
+      years: 10,
     });
     expect(compundInterest.total).toBeCloseTo(23763.28);
   });
@@ -93,7 +93,7 @@ describe('Correct compund interest', () => {
       startCapital: 0,
       monthlyDeposit: 1000,
       interestRate: 8,
-      years: 2
+      years: 2,
     });
     expect(compundInterest.total).toBeCloseTo(25933.19);
   });
@@ -103,7 +103,7 @@ describe('Correct compund interest', () => {
       startCapital: 5000,
       monthlyDeposit: 100,
       interestRate: 0,
-      years: 10
+      years: 10,
     });
     expect(compundInterest.total).toEqual(17000);
   });
@@ -113,7 +113,7 @@ describe('Correct compund interest', () => {
       startCapital: 5000,
       monthlyDeposit: 0,
       interestRate: 0,
-      years: 10
+      years: 10,
     });
     expect(compundInterest.total).toEqual(5000);
   });
@@ -123,7 +123,7 @@ describe('Correct compund interest', () => {
       startCapital: 10000,
       monthlyDeposit: 100,
       interestRate: 10,
-      years: 0
+      years: 0,
     });
     expect(compundInterest.total).toEqual(10000);
   });
@@ -135,7 +135,7 @@ describe('Calculate year by year', () => {
       startCapital: 10000,
       monthlyDeposit: 1000,
       interestRate: 10,
-      years: 1
+      years: 1,
     });
     const year1 = allYears.totals.find(res => res.year === 1);
     expect(year1.value).toBeCloseTo(23612.7);
@@ -146,7 +146,7 @@ describe('Calculate year by year', () => {
       startCapital: 5000,
       monthlyDeposit: 100,
       interestRate: 5,
-      years: 10
+      years: 10,
     });
     const year10 = allYears.totals.find(res => res.year === 10);
     expect(year10.value).toBeCloseTo(23763.28);
@@ -157,7 +157,7 @@ describe('Calculate year by year', () => {
       startCapital: 5000,
       monthlyDeposit: 100,
       interestRate: 0,
-      years: 10
+      years: 10,
     });
     const year10 = allYears.totals.find(res => res.year === 10);
     expect(year10.value).toBe(17000);
@@ -167,7 +167,7 @@ describe('Calculate year by year', () => {
       startCapital: 5000,
       monthlyDeposit: 0,
       interestRate: 'asdf',
-      years: ''
+      years: '',
     });
     expect(result).toHaveProperty('error');
   });

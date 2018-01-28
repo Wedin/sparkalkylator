@@ -1,9 +1,9 @@
-const isNumeric = num => !isNaN(parseFloat(num)) && isFinite(num);
+const isNumeric = num => !Number.isNaN(parseFloat(num)) && Number.isFinite(num);
 
 const localeRounded = (num, digits) =>
   num.toLocaleString(undefined, {
     minimumFractionDigits: 0,
-    maximumFractionDigits: digits
+    maximumFractionDigits: digits,
   });
 
 export { isNumeric, localeRounded };

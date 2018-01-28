@@ -7,6 +7,7 @@ import ResultYearsTable from './resultYearsTable';
 import InterestCalculator from '../../interestCalculator/interestCalculator';
 
 export default class extends React.Component {
+  displayName = 'SavingsCalculator';
   constructor(props) {
     super(props);
 
@@ -15,7 +16,7 @@ export default class extends React.Component {
       monthlyDeposit: 1000,
       interestRate: 8,
       savingsYears: '20',
-      result: {}
+      result: {},
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -31,7 +32,6 @@ export default class extends React.Component {
 
   setAdvanced() {
     // TODO
-    console.log(123);
   }
 
   calculateResult() {
@@ -39,14 +39,14 @@ export default class extends React.Component {
       startCapital: this.state.startCapital,
       monthlyDeposit: this.state.monthlyDeposit,
       interestRate: this.state.interestRate,
-      years: this.state.savingsYears
+      years: this.state.savingsYears,
     };
     const result = this.InterestCalculator.calculatePerYear(data);
     if (result.error) {
       return;
     }
     this.setState({
-      result
+      result,
     });
   }
 
@@ -136,46 +136,48 @@ export default class extends React.Component {
         <SavingsGraph returnEachYear={Object.getOwnPropertyNames(this.state.result).length > 0 ? this.state.result.totals : []} />
         <ResultYearsTable resultPerYear={Object.getOwnPropertyNames(this.state.result).length > 0 ? this.state.result.totals : []} />
 
-        <style jsx>{`
-          .savings-calc {
-            box-shadow: 0 20px 40px rgba(37, 37, 100, 0.05), 0 10px 20px rgba(37, 37, 100, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            min-height: 300px;
-            padding: 1.25rem;
-            max-width: 720px;
-            margin: 50px auto 0;
-            border-radius: 4px;
-          }
-
-          @media (min-width: 600px) {
-            :global(.text-input + .text-input) {
-              padding-left: 20px;
+        <style jsx>
+          {`
+            .savings-calc {
+              box-shadow: 0 20px 40px rgba(37, 37, 100, 0.05), 0 10px 20px rgba(37, 37, 100, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
+              width: 100%;
+              min-height: 300px;
+              padding: 1.25rem;
+              max-width: 720px;
+              margin: 50px auto 0;
+              border-radius: 4px;
             }
 
-            :global(.range-input-container:nth-child(odd)) {
-              padding-left: 20px;
+            @media (min-width: 600px) {
+              :global(.text-input + .text-input) {
+                padding-left: 20px;
+              }
+
+              :global(.range-input-container:nth-child(odd)) {
+                padding-left: 20px;
+              }
             }
-          }
 
-          .toggle-advanced {
-            margin-top: 1rem;
-            display: inline-block;
-          }
+            .toggle-advanced {
+              margin-top: 1rem;
+              display: inline-block;
+            }
 
-          .heading {
-            margin: 0 0 15px 0;
-            font-size: 1.5rem;
-          }
+            .heading {
+              margin: 0 0 15px 0;
+              font-size: 1.5rem;
+            }
 
-          .submit-container {
-            margin-top: 1rem;
-            text-align: center;
-          }
+            .submit-container {
+              margin-top: 1rem;
+              text-align: center;
+            }
 
-          p {
-            margin: 0;
-          }
-        `}</style>
+            p {
+              margin: 0;
+            }
+          `}
+        </style>
       </div>
     );
   }

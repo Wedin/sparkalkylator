@@ -4,8 +4,9 @@ import { localeRounded } from '../../utils/numberUtils';
 
 export default class extends React.Component {
   static propTypes = {
-    resultPerYear: PropTypes.array.isRequired
+    resultPerYear: PropTypes.array.isRequired,
   };
+  displayName = 'ResultYearsTable';
 
   constructor(props) {
     super(props);
@@ -23,20 +24,22 @@ export default class extends React.Component {
     return (
       <div className="wrapper">
         <ul>{listItems}</ul>
-        <style jsx>{`
-          p {
-            margin: 0;
-          }
-          .wrapper {
-            max-width: 720px;
-            margin: 0 auto;
-          }
-          .list-year {
-            display: flex;
-            justifycontent: center;
-            alignitems: center;
-          }
-        `}</style>
+        <style jsx>
+          {`
+            p {
+              margin: 0;
+            }
+            .wrapper {
+              max-width: 720px;
+              margin: 0 auto;
+            }
+            .list-year {
+              display: flex;
+              justifycontent: center;
+              alignitems: center;
+            }
+          `}
+        </style>
       </div>
     );
   }

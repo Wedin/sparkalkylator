@@ -1,4 +1,3 @@
-/* global screen */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
@@ -6,8 +5,10 @@ import { localeRounded } from '../../utils/numberUtils';
 
 export default class extends React.Component {
   static propTypes = {
-    returnEachYear: PropTypes.array.isRequired
+    returnEachYear: PropTypes.array.isRequired,
   };
+
+  displayName = 'Savings Graph';
 
   shouldComponentUpdate(nextProps) {
     return nextProps.returnEachYear.length > 1;
@@ -17,14 +18,12 @@ export default class extends React.Component {
     if (this.props.returnEachYear.length < 1) {
       return [];
     }
-    return this.props.returnEachYear.map(result => {
-      return {
-        name: `${result.year}`,
-        Värde: Math.round(result.value),
-        formatted: localeRounded(Math.round(result.value)),
-        Inbetalt: result.deposited
-      };
-    });
+    return this.props.returnEachYear.map(result => ({
+      name: `${result.year}`,
+      Värde: Math.round(result.value),
+      formatted: localeRounded(Math.round(result.value)),
+      Inbetalt: result.deposited,
+    }));
   }
 
   getDimentions() {
@@ -32,8 +31,8 @@ export default class extends React.Component {
     const oneSidePadding = 25;
     let width = 0;
     let height = 0;
-    if (screen.width < wrapperWidth) {
-      width = screen.width - oneSidePadding;
+    if (window.screen.width < wrapperWidth) {
+      width = window.screen.width - oneSidePadding;
     } else {
       width = wrapperWidth - 2 * oneSidePadding;
     }
@@ -53,7 +52,17 @@ export default class extends React.Component {
 
     return (
       <div className="wrapper">
-        <LineChart width={dimensions.width} height={dimensions.height} data={formattedData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+        <LineChart
+          width={dimensions.width}
+          height={dimensions.height}
+          data={formattedData}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
           {' '}
           <XAxis dataKey="name" />
           <YAxis dataKey="Värde" name="formatted" tickLine={false} interval="preserveEnd" />
@@ -64,13 +73,15 @@ export default class extends React.Component {
           <Line type="monotone" dataKey="Inbetalt" stroke="#3B6F57" dot={false} />
         </LineChart>
 
-        <style jsx>{`
-          .wrapper {
-            margin-top: 50px;
-            display: flex;
-            justify-content: center;
-          }
-        `}</style>
+        <style jsx>
+          {`
+            .wrapper {
+              margin-top: 50px;
+              display: flex;
+              justify-content: center;
+            }
+          `}
+        </style>
       </div>
     );
   }
