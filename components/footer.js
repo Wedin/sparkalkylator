@@ -42,7 +42,6 @@ export default class extends React.Component {
               right: 0;
               bottom: 0;
               left: 0;
-              text-align: center;
               width: 100%;
               padding: 10px;
               background: #333;
@@ -51,6 +50,11 @@ export default class extends React.Component {
               opacity: 1;
               transition: all 0.5s ease;
               display: block;
+              margin: 0 auto;
+              background: none;
+              border: 0;
+              outline: 0;
+              font-size: 20px;
             }
             .toggling {
               opacity: 0;
