@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../button';
-import RangeInput from '../rangeInput';
+import RangeInput from '../ant/rangeInput';
 import SavingsResult from './savingsResult';
 import SavingsGraph from './savingsGraph';
 import ResultYearsTable from './resultYearsTable';
