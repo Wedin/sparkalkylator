@@ -10,7 +10,7 @@ export default class extends React.Component {
 
   constructor(props) {
     super(props);
-    this.asdf = props;
+    this.asdf = props; // DUMMY
   }
 
   render() {
