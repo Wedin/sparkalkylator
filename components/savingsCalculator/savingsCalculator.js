@@ -24,6 +24,7 @@ export default class extends React.Component {
     this.calculateResult = this.calculateResult.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.InterestCalculator = new InterestCalculator();
+    this.graphTimeout = undefined;
   }
 
   onSubmit(event) {
@@ -45,7 +46,16 @@ export default class extends React.Component {
     const result = this.InterestCalculator.calculatePerYear(data);
 
     if (result.error) {
+      // TODO
       return;
+    }
+    if (full) {
+      clearTimeout(this.graphTimeout);
+    } else {
+      clearTimeout(this.graphTimeout);
+      this.graphTimeout = setTimeout(() => {
+        this.setState({ graphResult: this.state.result });
+      }, 500);
     }
     const res = full ? { result, graphResult: result } : { result };
     this.setState(res);
