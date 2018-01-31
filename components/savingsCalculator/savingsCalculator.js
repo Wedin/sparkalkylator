@@ -17,6 +17,7 @@ export default class extends React.Component {
       interestRate: 8,
       savingsYears: '20',
       result: {},
+      graphResult: {},
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -27,14 +28,14 @@ export default class extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
-    this.calculateResult();
+    this.calculateResult(true);
   }
 
   setAdvanced() {
     // TODO
   }
 
-  calculateResult() {
+  calculateResult(full) {
     const data = {
       startCapital: this.state.startCapital,
       monthlyDeposit: this.state.monthlyDeposit,
@@ -42,12 +43,12 @@ export default class extends React.Component {
       years: this.state.savingsYears,
     };
     const result = this.InterestCalculator.calculatePerYear(data);
+
     if (result.error) {
       return;
     }
-    this.setState({
-      result,
-    });
+    const res = full ? { result, graphResult: result } : { result };
+    this.setState(res);
   }
 
   handleInputChange(event) {
@@ -133,8 +134,8 @@ export default class extends React.Component {
           </div>
         </form>
         <SavingsResult total={total} totalYield={totalYield} years={this.state.savingsYears} />
-        <SavingsGraph returnEachYear={Object.getOwnPropertyNames(this.state.result).length > 0 ? this.state.result.totals : []} />
-        <ResultYearsTable resultPerYear={Object.getOwnPropertyNames(this.state.result).length > 0 ? this.state.result.totals : []} />
+        <SavingsGraph returnEachYear={Object.getOwnPropertyNames(this.state.graphResult).length > 0 ? this.state.graphResult.totals : []} />
+        <ResultYearsTable resultPerYear={Object.getOwnPropertyNames(this.state.graphResult).length > 0 ? this.state.graphResult.totals : []} />
 
         <style jsx>
           {`

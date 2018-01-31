@@ -26,6 +26,8 @@ export default class RangeInput extends React.Component {
           placeholder={this.props.placeholder}
           step={this.props.step}
           onChange={this.props.onChange}
+          min={this.props.min}
+          max={this.props.max}
         />
         {this.props.labelAfter.length > 0 && <span className="after-label">{this.props.labelAfter}</span>}
         <span />
