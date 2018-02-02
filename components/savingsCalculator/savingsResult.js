@@ -31,10 +31,10 @@ export default class SavingsResult extends React.Component {
         <style jsx>
           {`
             .wrapper {
-              box-shadow: 0 20px 40px rgba(37, 37, 100, 0.05), 0 10px 20px rgba(37, 37, 100, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
+              border: 1px solid #ddd;
               width: 100%;
               padding: 1.25rem;
-              max-width: 720px;
+              max-width: 820px;
               margin: 40px auto 0;
               border-radius: 4px;
             }
@@ -59,5 +59,5 @@ export default class SavingsResult extends React.Component {
 SavingsResult.propTypes = {
   total: PropTypes.number.isRequired,
   totalYield: PropTypes.number.isRequired,
-  years: PropTypes.string.isRequired,
+  years: PropTypes.number.isRequired,
 };

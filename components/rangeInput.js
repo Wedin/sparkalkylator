@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 export default class RangeInput extends React.Component {
   render() {
     return (
-      <label htmlFor={`${this.props.name}_range ${this.props.name}_number`} className={this.props.className ? `${this.props.className} container` : 'container'}>
+      <label
+        htmlFor={`${this.props.name}_range ${this.props.name}_number`}
+        className={this.props.className ? `${this.props.className} container` : 'container'}
+      >
         <div className="label">{this.props.label}</div>
         <input
           id={`${this.props.name}_range`}

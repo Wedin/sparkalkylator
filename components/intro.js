@@ -23,7 +23,7 @@ export default class extends React.Component {
 
             @media (min-width: 600px) {
               .intro__inner {
-                max-width: 720px;
+                max-width: 820px;
               }
             }
 
