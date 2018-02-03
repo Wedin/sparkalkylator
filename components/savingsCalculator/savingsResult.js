@@ -26,7 +26,7 @@ export default class SavingsResult extends React.Component {
           Efter {this.props.years} år har dina pengar ökat till <span className="total">{formattedTotal} kr.</span>
         </h2>
         <h3>
-          Utan ränta-på-ränta hade du endast sparat ihop <span>{formattedTotalWithoutYield} kr.</span>
+          Utan ränta-på-ränta effekten hade du endast sparat ihop <span>{formattedTotalWithoutYield} kr.</span>
         </h3>
         <style jsx>
           {`

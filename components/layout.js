@@ -10,7 +10,7 @@ const layout = ({ children, title }) => (
     </Head>
     <Header />
 
-    {children}
+    <div className="content">{children}</div>
 
     <Footer />
     <style global jsx>
@@ -27,18 +27,8 @@ const layout = ({ children, title }) => (
           min-height: 100vh;
           padding-bottom: 100px;
         }
-        ul {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-        }
-        a {
-          color: #4772e5;
-          text-decoration: none;
-          transition: color 0.25s ease;
-        }
-        a:hover {
-          color: #3a5fc1;
+        .content {
+          padding-top: 48px;
         }
         * {
           -moz-box-sizing: border-box;

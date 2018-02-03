@@ -12,9 +12,9 @@ export default class RangeInput extends React.Component {
     this.props.onChange({ name: this.props.name, value });
   }
   render() {
-    const numberId = ` ${this.props.name}_number`;
+    const numberId = `${this.props.name}_number`;
     return (
-      <label htmlFor={numberId}>
+      <label className="container" htmlFor={numberId}>
         <label htmlFor={numberId} className="label">
           {this.props.label}
         </label>
@@ -27,15 +27,17 @@ export default class RangeInput extends React.Component {
             value={this.props.value}
             formatter={this.props.formatter}
             parser={this.props.parser}
+            tipFormatter={this.props.tipFormatter}
           />
         </Col>
-        <Col span={8}>
+        <Col span={7}>
           <InputNumber
             id={numberId}
             min={this.props.min}
+            defaultValue={this.props.defaultValue}
             max={this.props.max}
             step={this.props.step}
-            style={{ marginLeft: 5, width: '90%' }}
+            style={{ marginLeft: 10, width: '90%' }}
             value={this.props.value}
             onChange={this.onChange}
             formatter={this.props.formatter}
@@ -45,6 +47,9 @@ export default class RangeInput extends React.Component {
 
         <style jsx>
           {`
+            .container {
+              width: 100%;
+            }
             .label {
               margin-left: 6px;
               display: block;
@@ -60,10 +65,16 @@ RangeInput.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.any.isRequired,
+  defaultValue: PropTypes.any.isRequired,
   onChange: PropTypes.func.isRequired,
   step: PropTypes.number.isRequired,
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   formatter: PropTypes.func.isRequired,
   parser: PropTypes.func.isRequired,
+  tipFormatter: PropTypes.func,
+};
+
+RangeInput.defaultProps = {
+  tipFormatter: null,
 };

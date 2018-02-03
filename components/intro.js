@@ -14,22 +14,21 @@ export default class extends React.Component {
         <style jsx>
           {`
             .intro {
-              padding-top: 120px;
+              padding-top: 40px;
             }
 
             .intro__inner {
               margin: 0 auto;
             }
-
-            @media (min-width: 600px) {
+            @media (max-width: 768px) {
               .intro__inner {
-                max-width: 820px;
+                padding: 0 16px;
               }
             }
 
-            @media (min-width: 1080px) {
+            @media (min-width: 576px) {
               .intro__inner {
-                max-width: 800px;
+                max-width: 820px;
               }
             }
           `}
