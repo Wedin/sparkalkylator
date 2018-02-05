@@ -46,7 +46,12 @@ export default class {
       return this.constructor.calculateWithoutReturns(startCapital, monthlyDeposit, years);
     }
     const interest = interestRate / 100;
-    const compoundInterestForInitialValue = this.constructor.calcCompoundInterestForInitialValue(startCapital, interest, this.frequency, years);
+    const compoundInterestForInitialValue = this.constructor.calcCompoundInterestForInitialValue(
+      startCapital,
+      interest,
+      this.frequency,
+      years
+    );
     const compundInterestForSerie = this.constructor.calcCompoundInterestForSerie(monthlyDeposit, interest, this.frequency, years);
 
     return compoundInterestForInitialValue + compundInterestForSerie;
@@ -67,28 +72,24 @@ export default class {
     };
   }
 
-  calculatePerYearFn(input, currentYear, acc) {
-    const { interestRate, years, startCapital, totalCapital, monthlyDeposit } = input;
-    if (years === currentYear) {
-      return acc;
-    }
+  calculatePerYearFnStep({ interestRate, startCapital, totalCapital, monthlyDeposit }, currentYear) {
     const partForInitial = this.constructor.calcCompoundInterestForInitialValue(totalCapital, interestRate, this.frequency, 1);
     const partForSeries = this.constructor.calcCompoundInterestForSerie(monthlyDeposit, interestRate, this.frequency, 1);
     const newCapital = partForInitial + partForSeries;
     const deposited = startCapital + (currentYear + 1) * monthlyDeposit * 12;
-    const newAcc = [...acc, { year: currentYear + 1, value: newCapital, deposited }];
-    const nextYear = currentYear + 1;
-    return this.calculatePerYearFn(
-      {
-        interestRate,
-        monthlyDeposit,
-        years,
-        startCapital,
-        totalCapital: newCapital,
-      },
-      nextYear,
-      newAcc
-    );
+    return { year: currentYear + 1, value: newCapital, deposited };
+  }
+
+  calculatePerYearFn(input, currentYear, acc) {
+    const { years } = input;
+    if (years === currentYear) {
+      return acc;
+    }
+
+    const yearResult = this.calculatePerYearFnStep(input, currentYear);
+    const modifiedInput = Object.assign(input, { totalCapital: yearResult.value });
+
+    return this.calculatePerYearFn(modifiedInput, currentYear + 1, [...acc, yearResult]);
   }
 
   calculatePerYear(input) {
@@ -96,18 +97,19 @@ export default class {
     if (Object.keys(validatedInput).length === 0) {
       return { error: 'Input is not valid' };
     }
-    const { startCapital } = validatedInput;
+    const { startCapital, interestRate } = validatedInput;
     const newInput = {
       ...validatedInput,
-      interestRate: validatedInput.interestRate / 100,
+      interestRate: interestRate / 100,
       totalCapital: startCapital,
     };
+
     return {
       totals: this.calculatePerYearFn(newInput, 0, [
         {
           year: 0,
-          value: validatedInput.startCapital,
-          deposited: validatedInput.startCapital,
+          value: startCapital,
+          deposited: startCapital,
         },
       ]),
     };
