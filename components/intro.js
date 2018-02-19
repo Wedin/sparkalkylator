@@ -20,7 +20,7 @@ export default class extends React.Component {
             .intro__inner {
               margin: 0 auto;
             }
-            @media (max-width: 768px) {
+            @media (max-width: 840px) {
               .intro__inner {
                 padding: 0 16px;
               }

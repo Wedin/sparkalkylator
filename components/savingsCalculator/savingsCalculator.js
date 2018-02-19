@@ -4,7 +4,6 @@ import Button from '../button';
 import RangeInput from '../ant/rangeInput';
 import SavingsResult from './savingsResult';
 import SavingsGraph from './savingsGraph';
-import ResultYearsTable from './resultYearsTable';
 import InterestCalculator from '../../interestCalculator/interestCalculator';
 
 const defaultValues = {
@@ -165,18 +164,15 @@ export default class extends React.Component {
                 tipFormatter={value => `${value} år`}
               />
             </Col>
-            <Button type="button" className="toggle-advanced as-link" label="Visa avancerade inställningar" onClick={this.setAdvanced} />
+            {/* <Button type="button" className="toggle-advanced as-link" label="Visa avancerade inställningar" onClick={this.setAdvanced} /> */}
 
-            <div className="submit-container">
+            <div className="submit-container ant-col-sm-24">
               <Button type="submit" className="cta" label="Beräkna" onClick={this.onSubmit} />
             </div>
           </Row>
         </form>
         <SavingsResult total={total} totalYield={totalYield} years={this.state.savingsYears} />
         <SavingsGraph returnEachYear={Object.getOwnPropertyNames(this.state.graphResult).length > 0 ? this.state.graphResult.totals : []} />
-        <ResultYearsTable
-          resultPerYear={Object.getOwnPropertyNames(this.state.graphResult).length > 0 ? this.state.graphResult.totals : []}
-        />
 
         <style jsx>
           {`
@@ -201,7 +197,7 @@ export default class extends React.Component {
             }
 
             .submit-container {
-              margin-top: 1rem;
+              margin-top: 15px;
               text-align: center;
             }
 

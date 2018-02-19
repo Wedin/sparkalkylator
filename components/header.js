@@ -69,7 +69,7 @@ class Header extends React.Component {
               trigger="click"
               visible={this.state.mobileMenuOpen}
               arrowPointAtCenter
-              onVisibleChange={(visible) => {
+              onVisibleChange={visible => {
                 this.setState({ mobileMenuOpen: visible });
               }}
             >

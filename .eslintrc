@@ -27,6 +27,7 @@
     "class-methods-use-this": "off",
     "function-paren-newline": "off",
     "react/forbid-prop-types": ["warn", { "forbid": ["array", "object"] }],
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "arrow-parens": "off"
   }
 }
