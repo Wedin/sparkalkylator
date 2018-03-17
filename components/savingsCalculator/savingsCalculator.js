@@ -62,7 +62,7 @@ export default class extends React.Component {
       clearTimeout(this.graphTimeout);
       this.graphTimeout = setTimeout(() => {
         this.setState({ graphResult: this.state.result });
-      }, 500);
+      }, 250);
     }
     const res = full ? { result, graphResult: result } : { result };
     this.setState(res);

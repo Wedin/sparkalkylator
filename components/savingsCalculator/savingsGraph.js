@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from 'victory';
 import { localeRounded } from '../../utils/numberUtils';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default class extends React.Component {
   static propTypes = {
@@ -9,25 +10,48 @@ export default class extends React.Component {
   };
 
   displayName = 'Savings Graph';
+  constructor(props) {
+    super(props);
+    this.state = {
+      chartWidth: 775,
+    };
+  }
+
+  componentDidMount() {
+    this.setChartWidth();
+    window.addEventListener('resize', this.setChartWidth.bind(this));
+  }
 
   shouldComponentUpdate(nextProps) {
     return nextProps.returnEachYear.length > 1;
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.setChartWidth.bind(this));
+  }
+
   getFormattedData() {
-    if (this.props.returnEachYear.length < 1) {
+    if (this.props.returnEachYear.length < 2) {
       return [];
     }
-    return this.props.returnEachYear.map(result => ({
+
+    // Remove year 0 from graph
+    return this.props.returnEachYear.slice(1).map(result => ({
       name: `${result.year}`,
-      Värde: Math.round(result.value),
+      year: result.year,
+      value: Math.round(result.value),
       formatted: localeRounded(Math.round(result.value)),
-      Inbetalt: result.deposited,
+      deposited: result.deposited,
     }));
   }
 
+  getYearsAxis(data) {
+    // Shorten when long range
+    return data.map(v => v.year);
+  }
+
   getDimentions() {
-    const wrapperWidth = 720;
+    const wrapperWidth = 820;
     const oneSidePadding = 25;
     let width = 0;
     let height = 0;
@@ -41,6 +65,18 @@ export default class extends React.Component {
     return { width, height };
   }
 
+  setChartWidth() {
+    const maxWidth = 775;
+    const space = 20;
+    let newWidth = maxWidth;
+
+    if (window.screen.width < maxWidth) {
+      newWidth = window.screen.width - space * 2;
+    }
+
+    this.setState({ chartWidth: newWidth });
+  }
+
   render() {
     if (this.props.returnEachYear.length < 1) {
       return <div />;
@@ -48,37 +84,57 @@ export default class extends React.Component {
 
     const formattedData = this.getFormattedData();
 
-    const dimensions = this.getDimentions();
-
     return (
       <div className="wrapper">
-        <LineChart
-          width={dimensions.width}
-          height={dimensions.height}
-          data={formattedData}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
+        <VictoryChart
+          theme={VictoryTheme.material}
+          domainPadding={20}
+          padding={{ left: 90, right: 0, top: 25, bottom: 50 }}
+          width={this.state.chartWidth}
+          domain={{
+            x: [0, formattedData.length],
+            y: [0, formattedData[formattedData.length - 1].value],
           }}
+          animate={{ duration: 250 }}
         >
-          {' '}
-          <XAxis dataKey="name" />
-          <YAxis dataKey="Värde" name="formatted" tickLine={false} interval="preserveEnd" />
-          <CartesianGrid strokeDasharray="3 3" />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="Värde" stroke="#784BA0" dot={false} strokeWidth={2} />
-          <Line type="monotone" dataKey="Inbetalt" stroke="#3B6F57" dot={false} />
-        </LineChart>
+          <VictoryAxis
+            tickValues={this.getYearsAxis(formattedData)}
+            style={{
+              axisLabel: { fontSize: 12 },
+              tickLabels: { fontSize: 12, padding: 5, angle: -50 },
+            }}
+          />
+          <VictoryAxis
+            dependentAxis
+            tickFormat={x => formatCurrency(x)}
+            style={{
+              axisLabel: { fontSize: 12 },
+              tickLabels: { fontSize: 12, padding: 5 },
+            }}
+          />
+
+          <VictoryBar
+            data={formattedData}
+            x="year"
+            y="value"
+            animate={{
+              onLoad: { duration: 400 },
+              onExit: {
+                duration: 250,
+                before: () => ({
+                  _y: 0,
+                  // fill: 'orange',
+                }),
+              },
+            }}
+          />
+        </VictoryChart>
 
         <style jsx>
           {`
             .wrapper {
-              margin-top: 50px;
-              display: flex;
-              justify-content: center;
+              margin: 25px auto 0 auto;
+              width: ${this.state.chartWidth || 820}px;
             }
           `}
         </style>
