@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from 'victory';
 import { localeRounded } from '../../utils/numberUtils';
-import { formatCurrency } from '../../utils/formatCurrency';
+import formatCurrency from '../../utils/formatCurrency';
 
 export default class extends React.Component {
   static propTypes = {

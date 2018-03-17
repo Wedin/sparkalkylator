@@ -15,9 +15,7 @@ export default class RangeInput extends React.Component {
     const numberId = `${this.props.name}_number`;
     return (
       <label className="container" htmlFor={numberId}>
-        <label htmlFor={numberId} className="label">
-          {this.props.label}
-        </label>
+        <div className="label">{this.props.label}</div>
         <Col span={16}>
           <Slider
             min={this.props.min}

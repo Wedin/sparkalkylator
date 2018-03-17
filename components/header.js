@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { withRouter } from 'next/router';
 import { Menu, Icon, Popover } from 'antd';
 import { screenSizeIs } from '../utils/screenSize';
+import SrOnly from './srOnly';
 
 class Header extends React.Component {
   displayName = 'Header';
@@ -75,6 +76,7 @@ class Header extends React.Component {
             >
               <button type="button" className="menu-btn-wrapper">
                 <Icon type="bars" style={{ fontSize: 16 }} onClick={this.handleMenuClick} />
+                <SrOnly>Menu</SrOnly>
               </button>
             </Popover>
           ) : null}
@@ -91,7 +93,7 @@ class Header extends React.Component {
         <style jsx>
           {`
           .header {
-            width: 100%
+            width: 100%;
             border-bottom: 1px solid #e5e5e5;
             position: absolute;
             top: 0;
