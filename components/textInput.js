@@ -17,7 +17,15 @@ export default class TextInput extends React.Component {
     return (
       <label htmlFor={this.props.name} className={this.props.className ? `${this.props.className} container` : 'container'}>
         <div className="label">{this.props.label}</div>
-        <input id={this.props.name} type="number" name={this.props.name} value={this.props.value} placeholder={this.props.placeholder} step={this.props.step} onChange={this.onChange} />
+        <input
+          id={this.props.name}
+          type="number"
+          name={this.props.name}
+          value={this.props.value}
+          placeholder={this.props.placeholder}
+          step={this.props.step}
+          onChange={this.onChange}
+        />
         <style jsx>
           {`
             .container {
