@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack } from 'victory';
 import { localeRounded } from '../../utils/numberUtils';
 import formatCurrency from '../../utils/formatCurrency';
 
 export default class extends React.Component {
   static propTypes = {
-    returnEachYear: PropTypes.array.isRequired,
+    startCapital: PropTypes.number,
+    returnEachYear: PropTypes.arrayOf(PropTypes.object).isRequired,
+  };
+
+  static defaultProps = {
+    startCapital: 0,
   };
 
   displayName = 'Savings Graph';
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.returnEachYear.length > 1;
-  }
-
-  getFormattedData() {
+  getFormattedReturnPerYear() {
     if (this.props.returnEachYear.length < 2) {
       return [];
     }
@@ -27,7 +28,18 @@ export default class extends React.Component {
       value: Math.round(result.value),
       formatted: localeRounded(Math.round(result.value)),
       deposited: result.deposited,
+      yield: Math.round(result.value - result.deposited),
     }));
+  }
+
+  getFormattedStartCapital() {
+    const startObj = {
+      value: this.props.startCapital,
+      formatted: localeRounded(Math.round(this.props.startCapital)),
+    };
+
+    const arr = new Array(this.props.returnEachYear.length - 1).fill(1);
+    return arr.map((_val, i) => ({ ...startObj, year: i + 1 }));
   }
 
   getYearsAxis(data) {
@@ -40,7 +52,12 @@ export default class extends React.Component {
       return <div />;
     }
 
-    const formattedData = this.getFormattedData();
+    const formattedData = this.getFormattedReturnPerYear();
+
+    const startCapitalBars =
+      this.props.startCapital && this.props.startCapital > 0 ? (
+        <VictoryBar data={this.getFormattedStartCapital()} x="year" y="value" />
+      ) : null;
 
     return (
       <div className="wrapper">
@@ -71,10 +88,8 @@ export default class extends React.Component {
             }}
           />
 
-          <VictoryBar
-            data={formattedData}
-            x="year"
-            y="value"
+          <VictoryStack
+            colorScale="qualitative"
             animate={{
               onLoad: { duration: 400 },
               onExit: {
@@ -84,7 +99,11 @@ export default class extends React.Component {
                 }),
               },
             }}
-          />
+          >
+            {startCapitalBars}
+            <VictoryBar data={formattedData} x="year" y="deposited" />
+            <VictoryBar data={formattedData} x="year" y="yield" />
+          </VictoryStack>
         </VictoryChart>
 
         <style jsx>

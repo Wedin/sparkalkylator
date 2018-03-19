@@ -172,7 +172,10 @@ export default class extends React.Component {
           </Row>
         </form>
         <SavingsResult total={total} totalYield={totalYield} years={this.state.savingsYears} />
-        <SavingsGraph returnEachYear={Object.getOwnPropertyNames(this.state.graphResult).length > 0 ? this.state.graphResult.totals : []} />
+        <SavingsGraph
+          returnEachYear={Object.getOwnPropertyNames(this.state.graphResult).length > 0 ? this.state.graphResult.totals : []}
+          startCapital={this.state.startCapital}
+        />
 
         <style jsx>
           {`
