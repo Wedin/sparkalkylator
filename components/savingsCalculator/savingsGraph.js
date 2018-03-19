@@ -55,7 +55,7 @@ export default class extends React.Component {
     const formattedData = this.getFormattedReturnPerYear();
 
     return (
-      <div className="wrapper">
+      <div className="wrapper fade-in">
         <VictoryChart
           theme={VictoryTheme.material}
           domainPadding={20}
@@ -65,7 +65,9 @@ export default class extends React.Component {
             x: [0, formattedData.length],
             y: [0, formattedData[formattedData.length - 1].value],
           }}
-          animate={{ duration: 250 }}
+          animate={{
+            duration: 250,
+          }}
         >
           <VictoryAxis
             tickValues={this.getYearsAxis(formattedData)}

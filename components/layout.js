@@ -51,9 +51,9 @@ const layout = ({ children, title }) => (
         }
         .fade-in {
           animation-name: fade-in-anim;
-          animation-duration: 0.3s;
+          animation-duration: 0.25s;
           animation-fill-mode: both;
-          animation-timing-function: ease;
+          animation-timing-function: cubic-bezier(0.1, 0.93, 0.3, 1.11);
         }
         * {
           -moz-box-sizing: border-box;
@@ -72,7 +72,7 @@ const layout = ({ children, title }) => (
 export default layout;
 
 layout.propTypes = {
-  children: PropTypes.array.isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
   title: PropTypes.string,
 };
 

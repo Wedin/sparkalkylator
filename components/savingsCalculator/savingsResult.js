@@ -21,7 +21,7 @@ export default class SavingsResult extends React.Component {
     const formattedTotal = localeRounded(this.props.total, 0);
 
     return (
-      <div className="wrapper">
+      <div className="wrapper fade-in">
         <h2>
           Efter {this.props.years} år har dina pengar ökat till <span className="total">{formattedTotal} kr.</span>
         </h2>

@@ -4,7 +4,13 @@ import { localeRounded } from '../../utils/numberUtils';
 
 export default class extends React.Component {
   static propTypes = {
-    resultPerYear: PropTypes.array.isRequired,
+    resultPerYear: PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.string,
+        year: PropTypes.number,
+        deposited: PropTypes.number,
+      })
+    ).isRequired,
   };
   displayName = 'ResultYearsTable';
 
