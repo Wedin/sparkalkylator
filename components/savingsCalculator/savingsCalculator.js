@@ -71,9 +71,9 @@ export default class extends React.Component {
   handleInputChange({ name, value }) {
     const { min, max, value: defaultValue } = defaultValues[name];
     let validatedValue = value || defaultValue;
-    if (value < min) {
+    if (value <= min) {
       validatedValue = min;
-    } else if (value > max) {
+    } else if (value >= max) {
       validatedValue = max;
     }
     this.setState({ [name]: validatedValue }, () => {
@@ -99,69 +99,69 @@ export default class extends React.Component {
             <Col sm={24} md={12} className="slider-input">
               <RangeInput
                 className="range-input-container"
-                name="startCapital"
-                label="Startkapital"
-                value={this.state.startCapital}
                 defaultValue={defaultValues.startCapital.value}
-                onChange={this.handleInputChange}
-                step={1000}
-                placeholder="10000"
-                min={defaultValues.startCapital.min}
-                max={defaultValues.startCapital.max}
                 formatter={value => `${value} kr`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                label="Startkapital"
+                max={defaultValues.startCapital.max}
+                min={defaultValues.startCapital.min}
+                name="startCapital"
+                onChange={this.handleInputChange}
                 parser={value => value.replace(/\$\s?|( *)/g, '').replace(/\D/g, '')}
+                placeholder="10000"
+                step={1000}
                 tipFormatter={value => `${value} kr`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                value={this.state.startCapital}
               />
             </Col>
             <Col sm={24} md={12} className="slider-input">
               <RangeInput
                 className="range-input-container"
-                name="monthlyDeposit"
-                label="Sparbelopp per månad"
-                value={this.state.monthlyDeposit}
                 defaultValue={defaultValues.monthlyDeposit.value}
+                formatter={value => `${value} kr`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                label="Sparbelopp per månad"
+                max={defaultValues.monthlyDeposit.max}
+                min={defaultValues.monthlyDeposit.min}
+                name="monthlyDeposit"
                 onChange={this.handleInputChange}
+                parser={value => value.replace(/\$\s?|( *)/g, '').replace(/\D/g, '')}
                 placeholder=""
                 step={100}
-                min={defaultValues.monthlyDeposit.min}
-                max={defaultValues.monthlyDeposit.max}
-                formatter={value => `${value} kr`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
-                parser={value => value.replace(/\$\s?|( *)/g, '').replace(/\D/g, '')}
                 tipFormatter={value => `${value} kr`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                value={this.state.monthlyDeposit}
               />
             </Col>
             <Col sm={24} md={12} className="slider-input">
               <RangeInput
                 className="range-input-container"
-                name="interestRate"
-                label="Årsränta"
-                value={this.state.interestRate}
                 defaultValue={defaultValues.interestRate.value}
+                formatter={value => `${value} %`}
+                label="Årsränta"
+                max={defaultValues.interestRate.max}
+                min={defaultValues.interestRate.min}
+                name="interestRate"
                 onChange={this.handleInputChange}
+                parser={value => value.replace(/\D/g, '')}
                 placeholder=""
                 step={0.1}
-                min={defaultValues.interestRate.min}
-                max={defaultValues.interestRate.max}
-                formatter={value => `${value} %`}
-                parser={value => value.replace(/\D/g, '')}
                 tipFormatter={value => `${value} %`}
+                value={this.state.interestRate}
               />
             </Col>
             <Col sm={24} md={12} className="slider-input">
               <RangeInput
                 className="range-input-container"
-                name="savingsYears"
-                label="Spartid"
-                value={this.state.savingsYears}
                 defaultValue={defaultValues.savingsYears.value}
+                formatter={value => `${value} år`}
+                label="Spartid"
+                max={defaultValues.savingsYears.max}
+                min={defaultValues.savingsYears.min}
+                name="savingsYears"
                 onChange={this.handleInputChange}
+                parser={value => value.replace(/\D/g, '')}
                 placeholder=""
                 step={1}
-                min={defaultValues.savingsYears.min}
-                max={defaultValues.savingsYears.max}
-                formatter={value => `${value} år`}
-                parser={value => value.replace(/\D/g, '')}
                 tipFormatter={value => `${value} år`}
+                value={this.state.savingsYears}
               />
             </Col>
             {/* <Button type="button" className="toggle-advanced as-link" label="Visa avancerade inställningar" onClick={this.setAdvanced} /> */}

@@ -18,28 +18,28 @@ export default class RangeInput extends React.Component {
         <div className="label">{this.props.label}</div>
         <Col span={16}>
           <Slider
-            min={this.props.min}
-            max={this.props.max}
-            step={this.props.step}
-            onChange={this.onChange}
-            value={this.props.value}
             formatter={this.props.formatter}
+            max={this.props.max}
+            min={this.props.min}
+            onChange={this.onChange}
             parser={this.props.parser}
+            step={this.props.step}
             tipFormatter={this.props.tipFormatter}
+            value={this.props.value}
           />
         </Col>
         <Col span={7}>
           <InputNumber
-            id={numberId}
-            min={this.props.min}
             defaultValue={this.props.defaultValue}
+            formatter={this.props.formatter}
+            id={numberId}
             max={this.props.max}
+            min={this.props.min}
+            onChange={this.onChange}
+            parser={this.props.parser}
             step={this.props.step}
             style={{ marginLeft: 10, width: '90%' }}
             value={this.props.value}
-            onChange={this.onChange}
-            formatter={this.props.formatter}
-            parser={this.props.parser}
           />
         </Col>
 
