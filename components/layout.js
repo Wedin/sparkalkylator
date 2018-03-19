@@ -18,9 +18,9 @@ const layout = ({ children, title }) => (
         body {
           background: white;
           margin: 0px;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
           font-size: 16px;
-          color: #363636;
+          color: #363636 !important;
         }
         .page-wrapper {
           position: relative;
@@ -29,6 +29,31 @@ const layout = ({ children, title }) => (
         }
         .content {
           padding-top: 48px;
+        }
+        .anim-1 {
+          animation-delay: 0.3s;
+        }
+        .anim-2 {
+          animation-delay: 0.5s;
+        }
+        .anim-3 {
+          animation-delay: 0.8s;
+        }
+        @keyframes fade-in-anim {
+          0% {
+            transform: scale(0.9);
+            opacity: 0.005;
+          }
+          to {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+        .fade-in {
+          animation-name: fade-in-anim;
+          animation-duration: 0.3s;
+          animation-fill-mode: both;
+          animation-timing-function: ease;
         }
         * {
           -moz-box-sizing: border-box;

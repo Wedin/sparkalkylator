@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { withRouter } from 'next/router';
 import { Menu, Icon, Popover } from 'antd';
 import { screenSizeIs } from '../utils/screenSize';
-import SrOnly from './srOnly';
 
 class Header extends React.Component {
   displayName = 'Header';
@@ -60,7 +59,9 @@ class Header extends React.Component {
       <header className="header">
         <nav className="header__inner header-menu">
           <Link href="/">
-            <a href="/">Sparkalkylatorn</a>
+            <a href="/" className="home-link">
+              Sparkalkylatorn
+            </a>
           </Link>
 
           {this.state.menuMode === 'inline' ? (
@@ -75,8 +76,8 @@ class Header extends React.Component {
               }}
             >
               <button type="button" className="menu-btn-wrapper">
-                <Icon type="bars" style={{ fontSize: 16 }} onClick={this.handleMenuClick} />
-                <SrOnly>Menu</SrOnly>
+                Menu
+                <Icon type="bars" style={{ fontSize: 16, marginLeft: 6, marginTop: 2 }} onClick={this.handleMenuClick} />
               </button>
             </Popover>
           ) : null}
@@ -92,49 +93,56 @@ class Header extends React.Component {
         </style>
         <style jsx>
           {`
-          .header {
-            width: 100%;
-            border-bottom: 1px solid #e5e5e5;
-            position: absolute;
-            top: 0;
-            background-color: transparent;
-            height: 48px;
-          }
-        }
+            .header {
+              width: 100%;
+              border-bottom: 1px solid #e5e5e5;
+              position: absolute;
+              top: 0;
+              background-color: transparent;
+              height: 48px;
+            }
 
-        .menu-btn-wrapper {
-          border: 0;
-          background: 0;
-          cursor: pointer;
-          outline: 0;
-        }
+            .home-link {
+              font-weight: 400;
+              font-size: 18px;
+            }
 
-        .header__inner {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          height: 100%;
-          margin: 0 auto;
-          padding: 0 20px;
-        }
+            .menu-btn-wrapper {
+              border: 0;
+              background: 0;
+              cursor: pointer;
+              outline: 0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
 
-        @media (min-width: 600px) {
-          .header__inner {
-            max-width: 720px;
-          }
-        }
+            .header__inner {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              height: 100%;
+              margin: 0 auto;
+              padding: 0 20px;
+            }
 
-        @media (min-width: 1080px) {
-          .header__inner {
-            max-width: 800px;
-          }
-        }
+            @media (min-width: 600px) {
+              .header__inner {
+                max-width: 720px;
+              }
+            }
 
-        .nav-right {
-          justify-content: flex-end;
-          display: flex;
-        }
-        `}
+            @media (min-width: 1080px) {
+              .header__inner {
+                max-width: 820px;
+              }
+            }
+
+            .nav-right {
+              justify-content: flex-end;
+              display: flex;
+            }
+          `}
         </style>
       </header>
     );

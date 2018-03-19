@@ -4,7 +4,7 @@ export default class extends React.Component {
   displayName = 'Intro';
   render() {
     return (
-      <div className="intro">
+      <div className="intro anim-1 fade-in">
         <div className="intro__inner">
           <h1>Räkna på ränta på ränta</h1>
           <p>Här kan du räkna på vad ett månadssparande kommer att ge.</p>

@@ -92,7 +92,7 @@ export default class extends React.Component {
     }
 
     return (
-      <div className="wrapper">
+      <div className="wrapper anim-2 fade-in">
         <form onSubmit={this.calculateResult} className="savings-calc">
           <h2 className="heading">Sparkalkylator</h2>
           <Row>

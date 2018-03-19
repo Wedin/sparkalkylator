@@ -10,24 +10,9 @@ export default class extends React.Component {
   };
 
   displayName = 'Savings Graph';
-  constructor(props) {
-    super(props);
-    this.state = {
-      chartWidth: 775,
-    };
-  }
-
-  componentDidMount() {
-    this.setChartWidth();
-    window.addEventListener('resize', this.setChartWidth.bind(this));
-  }
 
   shouldComponentUpdate(nextProps) {
     return nextProps.returnEachYear.length > 1;
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.setChartWidth.bind(this));
   }
 
   getFormattedData() {
@@ -50,33 +35,6 @@ export default class extends React.Component {
     return data.map(v => v.year);
   }
 
-  getDimentions() {
-    const wrapperWidth = 820;
-    const oneSidePadding = 25;
-    let width = 0;
-    let height = 0;
-    if (window.screen.width < wrapperWidth) {
-      width = window.screen.width - oneSidePadding;
-    } else {
-      width = wrapperWidth - 2 * oneSidePadding;
-    }
-    height = width * 9 / 16;
-
-    return { width, height };
-  }
-
-  setChartWidth() {
-    const maxWidth = 775;
-    const space = 20;
-    let newWidth = maxWidth;
-
-    if (window.screen.width < maxWidth) {
-      newWidth = window.screen.width - space * 2;
-    }
-
-    this.setState({ chartWidth: newWidth });
-  }
-
   render() {
     if (this.props.returnEachYear.length < 1) {
       return <div />;
@@ -90,7 +48,7 @@ export default class extends React.Component {
           theme={VictoryTheme.material}
           domainPadding={20}
           padding={{ left: 90, right: 0, top: 25, bottom: 50 }}
-          width={this.state.chartWidth}
+          width={775}
           domain={{
             x: [0, formattedData.length],
             y: [0, formattedData[formattedData.length - 1].value],
@@ -106,7 +64,7 @@ export default class extends React.Component {
           />
           <VictoryAxis
             dependentAxis
-            tickFormat={x => formatCurrency(x)}
+            tickFormat={x => formatCurrency.formatCurrency(x)}
             style={{
               axisLabel: { fontSize: 12 },
               tickLabels: { fontSize: 12, padding: 5 },
@@ -123,7 +81,6 @@ export default class extends React.Component {
                 duration: 250,
                 before: () => ({
                   _y: 0,
-                  // fill: 'orange',
                 }),
               },
             }}
@@ -134,7 +91,8 @@ export default class extends React.Component {
           {`
             .wrapper {
               margin: 25px auto 0 auto;
-              width: ${this.state.chartWidth || 820}px;
+              max-width: 820px;
+              padding: 0 10px;
             }
           `}
         </style>
