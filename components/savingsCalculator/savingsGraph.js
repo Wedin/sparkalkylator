@@ -54,11 +54,6 @@ export default class extends React.Component {
 
     const formattedData = this.getFormattedReturnPerYear();
 
-    const startCapitalBars =
-      this.props.startCapital && this.props.startCapital > 0 ? (
-        <VictoryBar data={this.getFormattedStartCapital()} x="year" y="value" />
-      ) : null;
-
     return (
       <div className="wrapper">
         <VictoryChart
@@ -100,7 +95,7 @@ export default class extends React.Component {
               },
             }}
           >
-            {startCapitalBars}
+            {this.props.startCapital > 0 && <VictoryBar data={this.getFormattedStartCapital()} x="year" y="value" />}
             <VictoryBar data={formattedData} x="year" y="deposited" />
             <VictoryBar data={formattedData} x="year" y="yield" />
           </VictoryStack>

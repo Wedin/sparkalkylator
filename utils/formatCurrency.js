@@ -1,11 +1,11 @@
 import { localeRounded } from './numberUtils';
 
-const MILLION = 1000000;
+const BILLION = 1e9;
 
 function formatCurrency(value) {
-  if (value >= MILLION) {
-    const rounded = localeRounded(value / MILLION, 2);
-    return `${rounded} mnkr`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  if (value >= BILLION) {
+    const rounded = localeRounded(value / BILLION, 2);
+    return `${rounded} md kr`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   }
 
   return `${value} kr`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
