@@ -22,6 +22,9 @@ const layout = ({ children, title }) => (
           font-size: 16px;
           color: #363636 !important;
         }
+        a {
+          color: #0469effc !important;
+        }
         .page-wrapper {
           position: relative;
           min-height: 100vh;
