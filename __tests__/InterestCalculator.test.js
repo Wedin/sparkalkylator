@@ -1,19 +1,4 @@
 import { calcCompoundInterestForInitialValue, validateInput, calculateOld, calcReturnsPerYear } from '../interestCalculator';
-import { isNumeric } from '../utils/numberUtils';
-
-describe('isNumeric', () => {
-  test('1 is numeric', () => {
-    expect(isNumeric('1')).toBeTruthy();
-  });
-
-  test('1.12 is numeric', () => {
-    expect(isNumeric('1.12')).toBeTruthy();
-  });
-
-  test('10aa is not numeric', () => {
-    expect(isNumeric('10aa')).toBeFalsy();
-  });
-});
 
 test('Parses input correctly', () => {
   expect(
@@ -156,6 +141,17 @@ describe('Calculate year by year', () => {
     const year10 = allYears.totals.find(res => res.year === 10);
     expect(year10.value).toBe(17000);
   });
+
+  test('With max input', () => {
+    const allYears = calcReturnsPerYear({
+      startCapital: 300000,
+      monthlyDeposit: 15000,
+      interestRate: 25,
+      years: 50,
+    });
+    expect(allYears.totals.length).toBe(51);
+  });
+
   test('Should handle erroneous input', () => {
     const result = calcReturnsPerYear({
       startCapital: 5000,
