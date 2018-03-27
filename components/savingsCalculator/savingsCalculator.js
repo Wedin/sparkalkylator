@@ -7,9 +7,9 @@ import SavingsGraph from './savingsGraph';
 import InterestCalculator from '../../interestCalculator/interestCalculator';
 
 const defaultValues = {
-  startCapital: { value: 10000, min: 0, max: 200000 },
+  startCapital: { value: 10000, min: 0, max: 300000 },
   monthlyDeposit: { value: 1000, min: 0, max: 15000 },
-  interestRate: { value: 8, min: 0, max: 20 },
+  interestRate: { value: 8, min: 0, max: 25 },
   savingsYears: { value: 20, min: 1, max: 50 },
 };
 
