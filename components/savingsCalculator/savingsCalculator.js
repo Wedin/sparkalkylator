@@ -4,7 +4,7 @@ import Button from '../button';
 import RangeInput from '../ant/rangeInput';
 import SavingsResult from './savingsResult';
 import SavingsGraph from './savingsGraph';
-import InterestCalculator from '../../interestCalculator/interestCalculator';
+import { calcReturnsPerYear } from '../../interestCalculator';
 
 const defaultValues = {
   startCapital: { value: 10000, min: 0, max: 300000 },
@@ -30,7 +30,6 @@ export default class extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.calculateResult = this.calculateResult.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.InterestCalculator = new InterestCalculator();
     this.graphTimeout = undefined;
   }
 
@@ -50,7 +49,7 @@ export default class extends React.Component {
       interestRate: this.state.interestRate,
       years: this.state.savingsYears,
     };
-    const result = this.InterestCalculator.calculatePerYear(data);
+    const result = calcReturnsPerYear(data);
 
     if (result.error) {
       // TODO

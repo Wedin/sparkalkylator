@@ -1,11 +1,5 @@
-import InterestCalculator from '../interestCalculator/interestCalculator';
+import { calcCompoundInterestForInitialValue, validateInput, calculateOld, calcReturnsPerYear } from '../interestCalculator';
 import { isNumeric } from '../utils/numberUtils';
-
-let interestCalculator;
-
-beforeAll(() => {
-  interestCalculator = new InterestCalculator();
-});
 
 describe('isNumeric', () => {
   test('1 is numeric', () => {
@@ -23,7 +17,7 @@ describe('isNumeric', () => {
 
 test('Parses input correctly', () => {
   expect(
-    InterestCalculator.validateInput({
+    validateInput({
       startCapital: '1000000',
       monthlyDeposit: '1000',
       interestRate: '8.2',
@@ -39,7 +33,7 @@ test('Parses input correctly', () => {
 
 test('Handle parse of incorrect input', () => {
   expect(
-    InterestCalculator.validateInput({
+    validateInput({
       startCapital: '1000000',
       monthlyDeposit: 'asdf',
       interestRate: '8.2',
@@ -54,7 +48,7 @@ describe('Compound interest without additions', () => {
     const annualInterestRate = 0;
     const recalcTimesPerYear = 12;
     const years = 5;
-    const total = InterestCalculator.calcCompoundInterestForInitialValue(initialDeposit, annualInterestRate, recalcTimesPerYear, years);
+    const total = calcCompoundInterestForInitialValue(initialDeposit, annualInterestRate, recalcTimesPerYear, years);
     expect(total).toBe(1000);
   });
 
@@ -63,7 +57,7 @@ describe('Compound interest without additions', () => {
     const annualInterestRate = 1000;
     const recalcTimesPerYear = 10;
     const years = 10;
-    const total = InterestCalculator.calcCompoundInterestForInitialValue(initialDeposit, annualInterestRate, recalcTimesPerYear, years);
+    const total = calcCompoundInterestForInitialValue(initialDeposit, annualInterestRate, recalcTimesPerYear, years);
     expect(total).toBe(0);
   });
 
@@ -72,14 +66,14 @@ describe('Compound interest without additions', () => {
     const annualInterestRate = 10;
     const recalcTimesPerYear = 12;
     const years = 0;
-    const total = InterestCalculator.calcCompoundInterestForInitialValue(initialDeposit, annualInterestRate, recalcTimesPerYear, years);
+    const total = calcCompoundInterestForInitialValue(initialDeposit, annualInterestRate, recalcTimesPerYear, years);
     expect(total).toBe(1000);
   });
 });
 
 describe('Correct compund interest', () => {
   test('For montly savings with start deposit', () => {
-    const compundInterest = interestCalculator.calculate({
+    const compundInterest = calculateOld({
       startCapital: 5000,
       monthlyDeposit: 100,
       interestRate: 5,
@@ -89,7 +83,7 @@ describe('Correct compund interest', () => {
   });
 
   test('For montly savings with start deposit2', () => {
-    const compundInterest = interestCalculator.calculate({
+    const compundInterest = calculateOld({
       startCapital: 0,
       monthlyDeposit: 1000,
       interestRate: 8,
@@ -99,7 +93,7 @@ describe('Correct compund interest', () => {
   });
 
   test('for 0 interest', () => {
-    const compundInterest = interestCalculator.calculate({
+    const compundInterest = calculateOld({
       startCapital: 5000,
       monthlyDeposit: 100,
       interestRate: 0,
@@ -109,7 +103,7 @@ describe('Correct compund interest', () => {
   });
 
   test('For 0 monthlyDeposit', () => {
-    const compundInterest = interestCalculator.calculate({
+    const compundInterest = calculateOld({
       startCapital: 5000,
       monthlyDeposit: 0,
       interestRate: 0,
@@ -119,7 +113,7 @@ describe('Correct compund interest', () => {
   });
 
   test('For 0 years', () => {
-    const compundInterest = interestCalculator.calculate({
+    const compundInterest = calculateOld({
       startCapital: 10000,
       monthlyDeposit: 100,
       interestRate: 10,
@@ -131,7 +125,7 @@ describe('Correct compund interest', () => {
 
 describe('Calculate year by year', () => {
   test('For 0 monthlyDeposit', () => {
-    const allYears = interestCalculator.calculatePerYear({
+    const allYears = calcReturnsPerYear({
       startCapital: 10000,
       monthlyDeposit: 1000,
       interestRate: 10,
@@ -142,7 +136,7 @@ describe('Calculate year by year', () => {
   });
 
   test('For 100 monthlyDeposit', () => {
-    const allYears = interestCalculator.calculatePerYear({
+    const allYears = calcReturnsPerYear({
       startCapital: 5000,
       monthlyDeposit: 100,
       interestRate: 5,
@@ -153,7 +147,7 @@ describe('Calculate year by year', () => {
   });
 
   test('With 0 interest', () => {
-    const allYears = interestCalculator.calculatePerYear({
+    const allYears = calcReturnsPerYear({
       startCapital: 5000,
       monthlyDeposit: 100,
       interestRate: 0,
@@ -163,7 +157,7 @@ describe('Calculate year by year', () => {
     expect(year10.value).toBe(17000);
   });
   test('Should handle erroneous input', () => {
-    const result = interestCalculator.calculatePerYear({
+    const result = calcReturnsPerYear({
       startCapital: 5000,
       monthlyDeposit: 0,
       interestRate: 'asdf',
