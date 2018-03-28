@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack, VictoryVoronoiContainer, VictoryTooltip } from 'victory';
 import { localeRounded } from '../../utils/numberUtils';
 import formatCurrency from '../../utils/formatCurrency';
 
@@ -34,11 +34,11 @@ export default class extends React.Component {
 
   getFormattedStartCapital() {
     const startObj = {
-      value: this.props.startCapital,
-      formatted: localeRounded(Math.round(this.props.startCapital)),
+      startCapital: this.props.startCapital,
+      formattedStartCapital: localeRounded(Math.round(this.props.startCapital)),
     };
 
-    const arr = new Array(this.props.returnEachYear.length - 1).fill(1);
+    const arr = Array(this.props.returnEachYear.length - 1).fill(0);
     return arr.map((_val, i) => ({ ...startObj, year: i + 1 }));
   }
 
@@ -58,6 +58,24 @@ export default class extends React.Component {
       <div className="wrapper fade-in">
         <VictoryChart
           theme={VictoryTheme.material}
+          containerComponent={
+            <VictoryVoronoiContainer
+              voronoiDimension="x"
+              labels={(point, index, points) => {
+                if (index === 0) {
+                  const pointToUse = points[1];
+                  return `Värdeökning: ${localeRounded(Math.round(pointToUse.yield))} kr`;
+                } else if (index === 1) {
+                  return `Insatt: ${localeRounded(Math.round(point.deposited))} kr`;
+                } else if (index === 2) {
+                  const pointToUse = points[0];
+                  return `Startkapital: ${localeRounded(Math.round(pointToUse.startCapital))} kr`;
+                }
+                return '';
+              }}
+              labelComponent={<VictoryTooltip cornerRadius={0} flyoutStyle={{ fill: 'white' }} />}
+            />
+          }
           domainPadding={20}
           padding={{ left: 90, right: 0, top: 25, bottom: 50 }}
           width={775}
@@ -97,7 +115,7 @@ export default class extends React.Component {
               },
             }}
           >
-            {this.props.startCapital > 0 && <VictoryBar data={this.getFormattedStartCapital()} x="year" y="value" />}
+            {this.props.startCapital > 0 && <VictoryBar data={this.getFormattedStartCapital()} x="year" y="startCapital" />}
             <VictoryBar data={formattedData} x="year" y="deposited" />
             <VictoryBar data={formattedData} x="year" y="yield" />
           </VictoryStack>
