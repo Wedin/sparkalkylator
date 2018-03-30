@@ -34,13 +34,13 @@ const layout = ({ children, title }) => (
           padding-top: 48px;
         }
         .anim-1 {
-          animation-delay: 0.3s;
+          animation-delay: 0.25s;
         }
         .anim-2 {
           animation-delay: 0.5s;
         }
         .anim-3 {
-          animation-delay: 0.8s;
+          animation-delay: 0.75s;
         }
         @keyframes fade-in-anim {
           0% {

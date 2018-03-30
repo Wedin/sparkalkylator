@@ -9,7 +9,8 @@
     "prettier": "prettier  --config ./.prettierrc '{app,components,utils,pages,__{tests}__}/**/*.js' --write",
     "lint": "eslint . --fix --ext .js",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "static-build": "next build && next export"
   },
   "author": "",
   "license": "ISC",

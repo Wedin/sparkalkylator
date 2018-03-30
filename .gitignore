@@ -1,6 +1,7 @@
 # next
 dist
 .next
+out
 
 logs
 *.log
