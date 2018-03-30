@@ -38,7 +38,7 @@ class Header extends React.Component {
       <Menu mode={this.state.menuMode} selectedKeys={[this.state.currentPath]}>
         {this.state.menuMode === 'inline' ? (
           <Menu.Item key="/">
-            <Link href="/">
+            <Link prefetch href="/">
               <a href="/">Sparkalkylatorn</a>
             </Link>
           </Menu.Item>
@@ -46,11 +46,13 @@ class Header extends React.Component {
 
         <Menu.Item key="/rakna">
           <Link href="/">
-            <a href="/räkna-på-ränta-på-ränta">Räkna på ränta på ränta</a>
+            <a href="/rakna">Räkna på ränta på ränta</a>
           </Link>
         </Menu.Item>
         <Menu.Item key="/om">
-          <a href="/om">Om</a>
+          <Link href="/om">
+            <a href="/om">Om</a>
+          </Link>
         </Menu.Item>
       </Menu>
     );
