@@ -2,7 +2,6 @@
   "name": "sparkalkylator",
   "private": true,
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "jest",
     "dev": "next",
@@ -10,9 +9,10 @@
     "lint": "eslint . --fix --ext .js",
     "build": "next build",
     "start": "next start",
-    "static-build": "next build && next export"
+    "static-build": "next build && next export",
+    "deploy": "npm run static-build && netlify deploy"
   },
-  "author": "",
+  "author": "Daniel Wedin",
   "license": "ISC",
   "dependencies": {
     "antd": "^3.3.3",
