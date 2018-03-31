@@ -29,6 +29,7 @@ const layout = ({ children, title }) => (
           position: relative;
           min-height: 100vh;
           padding-bottom: 100px;
+          overflow: hidden;
         }
         .content {
           padding-top: 48px;
