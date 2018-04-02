@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 export default class RangeInput extends React.Component {
   render() {
     return (
       <label
         htmlFor={`${this.props.name}_range ${this.props.name}_number`}
-        className={this.props.className ? `${this.props.className} container` : 'container'}
+        className={this.props.className ? `${this.props.className} container` : "container"}
       >
         <div className="label">{this.props.label}</div>
         <input
@@ -104,7 +104,7 @@ RangeInput.propTypes = {
 };
 
 RangeInput.defaultProps = {
-  className: '',
-  placeholder: '',
-  labelAfter: '',
+  className: "",
+  placeholder: "",
+  labelAfter: "",
 };

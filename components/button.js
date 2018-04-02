@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 export default class Button extends React.Component {
   static propTypes = {
@@ -9,7 +9,7 @@ export default class Button extends React.Component {
     onClick: PropTypes.func.isRequired,
   };
   static defaultProps = {
-    className: '',
+    className: "",
   };
 
   render() {

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 export default class extends React.Component {
-  displayName = 'Intro';
+  displayName = "Intro";
   render() {
     return (
       <div className="intro anim-1 fade-in">

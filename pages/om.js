@@ -1,8 +1,8 @@
-import React from 'react';
-import Layout from '../components/layout';
+import React from "react";
+import Layout from "../components/layout";
 
 export default class extends React.PureComponent {
-  displayName = 'about';
+  displayName = "about";
   render() {
     return (
       <Layout title="Sparkalkylatorn">

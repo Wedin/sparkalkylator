@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack, VictoryVoronoiContainer, VictoryTooltip } from 'victory';
-import { localeRounded } from '../../utils/numberUtils';
-import formatCurrency from '../../utils/formatCurrency';
+import React from "react";
+import PropTypes from "prop-types";
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack, VictoryVoronoiContainer, VictoryTooltip } from "victory";
+import { localeRounded } from "../../utils/numberUtils";
+import formatCurrency from "../../utils/formatCurrency";
 
 export default class extends React.Component {
   static propTypes = {
@@ -14,7 +14,7 @@ export default class extends React.Component {
     startCapital: 0,
   };
 
-  displayName = 'Savings Graph';
+  displayName = "Savings Graph";
 
   getFormattedReturnPerYear() {
     if (this.props.returnEachYear.length < 2) {
@@ -71,9 +71,9 @@ export default class extends React.Component {
                   const pointToUse = points[0];
                   return `Startkapital: ${localeRounded(Math.round(pointToUse.startCapital))} kr`;
                 }
-                return '';
+                return "";
               }}
-              labelComponent={<VictoryTooltip cornerRadius={0} flyoutStyle={{ fill: 'white' }} />}
+              labelComponent={<VictoryTooltip cornerRadius={0} flyoutStyle={{ fill: "white" }} />}
             />
           }
           domainPadding={20}

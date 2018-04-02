@@ -2,17 +2,17 @@
 function screenSize() {
   const width = window.innerWidth;
   if (width < 576) {
-    return 'xs';
+    return "xs";
   } else if (width < 768) {
-    return 'sm';
+    return "sm";
   } else if (width < 992) {
-    return 'md';
+    return "md";
   } else if (width < 1200) {
-    return 'lg';
+    return "lg";
   } else if (width < 1600) {
-    return 'xl';
+    return "xl";
   }
-  return 'xxl';
+  return "xxl";
 }
 
 function screenSizeIs(matches) {

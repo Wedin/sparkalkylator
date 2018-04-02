@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Slider, InputNumber, Col } from 'antd';
+import React from "react";
+import PropTypes from "prop-types";
+import { Slider, InputNumber, Col } from "antd";
 
 export default class RangeInput extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ export default class RangeInput extends React.Component {
             onChange={this.onChange}
             parser={this.props.parser}
             step={this.props.step}
-            style={{ marginLeft: 10, width: '90%' }}
+            style={{ marginLeft: 10, width: "90%" }}
             value={this.props.value}
           />
         </Col>

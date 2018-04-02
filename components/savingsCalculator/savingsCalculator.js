@@ -1,10 +1,10 @@
-import React from 'react';
-import { Row, Col } from 'antd';
-import Button from '../button';
-import RangeInput from '../ant/rangeInput';
-import SavingsResult from './savingsResult';
-import SavingsGraph from './savingsGraph';
-import { calcReturnsPerYear } from '../../interestCalculator';
+import React from "react";
+import { Row, Col } from "antd";
+import Button from "../button";
+import RangeInput from "../ant/rangeInput";
+import SavingsResult from "./savingsResult";
+import SavingsGraph from "./savingsGraph";
+import { calcReturnsPerYear } from "../../interestCalculator";
 
 const defaultValues = {
   startCapital: { value: 10000, min: 0, max: 300000 },
@@ -14,7 +14,7 @@ const defaultValues = {
 };
 
 export default class extends React.Component {
-  displayName = 'SavingsCalculator';
+  displayName = "SavingsCalculator";
   constructor(props) {
     super(props);
 
@@ -99,16 +99,16 @@ export default class extends React.Component {
               <RangeInput
                 className="range-input-container"
                 defaultValue={defaultValues.startCapital.value}
-                formatter={value => `${value} kr`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                formatter={value => `${value} kr`.replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
                 label="Startkapital"
                 max={defaultValues.startCapital.max}
                 min={defaultValues.startCapital.min}
                 name="startCapital"
                 onChange={this.handleInputChange}
-                parser={value => value.replace(/\$\s?|( *)/g, '').replace(/\D/g, '')}
+                parser={value => value.replace(/\$\s?|( *)/g, "").replace(/\D/g, "")}
                 placeholder="10000"
                 step={1000}
-                tipFormatter={value => `${value} kr`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                tipFormatter={value => `${value} kr`.replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
                 value={this.state.startCapital}
               />
             </Col>
@@ -116,16 +116,16 @@ export default class extends React.Component {
               <RangeInput
                 className="range-input-container"
                 defaultValue={defaultValues.monthlyDeposit.value}
-                formatter={value => `${value} kr`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                formatter={value => `${value} kr`.replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
                 label="Sparbelopp per månad"
                 max={defaultValues.monthlyDeposit.max}
                 min={defaultValues.monthlyDeposit.min}
                 name="monthlyDeposit"
                 onChange={this.handleInputChange}
-                parser={value => value.replace(/\$\s?|( *)/g, '').replace(/\D/g, '')}
+                parser={value => value.replace(/\$\s?|( *)/g, "").replace(/\D/g, "")}
                 placeholder=""
                 step={100}
-                tipFormatter={value => `${value} kr`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                tipFormatter={value => `${value} kr`.replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
                 value={this.state.monthlyDeposit}
               />
             </Col>
@@ -139,7 +139,7 @@ export default class extends React.Component {
                 min={defaultValues.interestRate.min}
                 name="interestRate"
                 onChange={this.handleInputChange}
-                parser={value => value.replace(/\D/g, '')}
+                parser={value => value.replace(/\D/g, "")}
                 placeholder=""
                 step={0.1}
                 tipFormatter={value => `${value} %`}
@@ -156,7 +156,7 @@ export default class extends React.Component {
                 min={defaultValues.savingsYears.min}
                 name="savingsYears"
                 onChange={this.handleInputChange}
-                parser={value => value.replace(/\D/g, '')}
+                parser={value => value.replace(/\D/g, "")}
                 placeholder=""
                 step={1}
                 tipFormatter={value => `${value} år`}

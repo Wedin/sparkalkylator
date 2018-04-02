@@ -1,18 +1,18 @@
-import React from 'react';
-import Link from 'next/link';
-import { withRouter } from 'next/router';
-import { Menu, Icon, Popover } from 'antd';
-import { screenSizeIs } from '../utils/screenSize';
+import React from "react";
+import Link from "next/link";
+import { withRouter } from "next/router";
+import { Menu, Icon, Popover } from "antd";
+import { screenSizeIs } from "../utils/screenSize";
 
 class Header extends React.Component {
-  displayName = 'Header';
+  displayName = "Header";
 
   constructor(props) {
     super(props);
     const { router } = props; // eslint-disable-line
 
     this.state = {
-      menuMode: 'horizontal',
+      menuMode: "horizontal",
       mobileMenuOpen: false,
       currentPath: router.route,
     };
@@ -22,9 +22,9 @@ class Header extends React.Component {
 
   componentDidMount() {
     // MOVE TO UTIL
-    const isMobile = screenSizeIs(['xs', 'sm']);
+    const isMobile = screenSizeIs(["xs", "sm"]);
     /* eslint-disable */
-    this.setState({ menuMode: isMobile ? 'inline' : 'horizontal' });
+    this.setState({ menuMode: isMobile ? "inline" : "horizontal" });
     /* eslint-enable */
   }
 
@@ -36,7 +36,7 @@ class Header extends React.Component {
   render() {
     const dropdownMenuContent = (
       <Menu mode={this.state.menuMode} selectedKeys={[this.state.currentPath]}>
-        {this.state.menuMode === 'inline' ? (
+        {this.state.menuMode === "inline" ? (
           <Menu.Item key="/">
             <Link prefetch href="/">
               <a href="/">Sparkalkylatorn</a>
@@ -66,7 +66,7 @@ class Header extends React.Component {
             </a>
           </Link>
 
-          {this.state.menuMode === 'inline' ? (
+          {this.state.menuMode === "inline" ? (
             <Popover
               placement="bottomRight"
               content={dropdownMenuContent}
@@ -84,7 +84,7 @@ class Header extends React.Component {
             </Popover>
           ) : null}
 
-          {this.state.menuMode === 'horizontal' ? dropdownMenuContent : null}
+          {this.state.menuMode === "horizontal" ? dropdownMenuContent : null}
         </nav>
         <style jsx global>
           {`

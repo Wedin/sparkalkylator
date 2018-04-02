@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { localeRounded } from '../../utils/numberUtils';
+import React from "react";
+import PropTypes from "prop-types";
+import { localeRounded } from "../../utils/numberUtils";
 
 export default class extends React.Component {
   static propTypes = {
@@ -12,7 +12,7 @@ export default class extends React.Component {
       })
     ).isRequired,
   };
-  displayName = 'ResultYearsTable';
+  displayName = "ResultYearsTable";
 
   constructor(props) {
     super(props);

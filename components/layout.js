@@ -1,7 +1,7 @@
-import Head from 'next/head';
-import PropTypes from 'prop-types';
-import Header from './header';
-import Footer from '../components/footer';
+import Head from "next/head";
+import PropTypes from "prop-types";
+import Header from "./header";
+import Footer from "../components/footer";
 
 const layout = ({ children, title }) => (
   <div className="page-wrapper">
@@ -18,7 +18,7 @@ const layout = ({ children, title }) => (
         body {
           background: white;
           margin: 0px;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
           font-size: 16px;
           color: #363636 !important;
         }
@@ -81,5 +81,5 @@ layout.propTypes = {
 };
 
 layout.defaultProps = {
-  title: 'Sparkalkylatorn',
+  title: "Sparkalkylatorn",
 };

@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 export default class TextInput extends React.Component {
   constructor(props) {
@@ -9,13 +9,13 @@ export default class TextInput extends React.Component {
 
   onChange(event) {
     const eventCopy = event;
-    eventCopy.target.value = event.target.value.replace(/\s/g, '');
+    eventCopy.target.value = event.target.value.replace(/\s/g, "");
     this.props.onChange(eventCopy);
   }
 
   render() {
     return (
-      <label htmlFor={this.props.name} className={this.props.className ? `${this.props.className} container` : 'container'}>
+      <label htmlFor={this.props.name} className={this.props.className ? `${this.props.className} container` : "container"}>
         <div className="label">{this.props.label}</div>
         <input
           id={this.props.name}
@@ -76,6 +76,6 @@ TextInput.propTypes = {
 };
 
 TextInput.defaultProps = {
-  className: '',
-  placeholder: '',
+  className: "",
+  placeholder: "",
 };

@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
 export default class extends React.Component {
-  displayName = 'Footer';
+  displayName = "Footer";
 
   constructor(props) {
     super(props);
 
     this.state = {
-      toggleState: '',
+      toggleState: "",
     };
     this.onClick = this.onClick.bind(this);
     this.reAnimate = this.reAnimate.bind(this);
@@ -16,15 +16,15 @@ export default class extends React.Component {
 
   onClick(evt) {
     evt.preventDefault();
-    this.setState({ toggleState: 'toggling' });
+    this.setState({ toggleState: "toggling" });
     clearTimeout(this.timeout);
     this.timeout = setTimeout(this.reAnimate, 500);
   }
 
   reAnimate() {
-    this.setState({ toggleState: 'toggled' });
+    this.setState({ toggleState: "toggled" });
     setTimeout(() => {
-      this.setState({ toggleState: '' });
+      this.setState({ toggleState: "" });
     }, 2000);
   }
   render() {

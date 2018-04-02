@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { localeRounded } from '../../utils/numberUtils';
+import React from "react";
+import PropTypes from "prop-types";
+import { localeRounded } from "../../utils/numberUtils";
 
 export default class SavingsResult extends React.Component {
   constructor(props) {

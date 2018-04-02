@@ -1,6 +1,6 @@
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Head, Main, NextScript } from "next/document";
 // styled-jsx comes bundled with nextjs
-import flush from 'styled-jsx/server'; // eslint-disable-line
+import flush from "styled-jsx/server"; // eslint-disable-line
 
 export default class extends Document {
   static getInitialProps({ renderPage }) {
