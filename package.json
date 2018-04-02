@@ -7,6 +7,7 @@
     "dev": "next",
     "prettier": "prettier  --config ./.prettierrc '{app,components,utils,pages,__{tests}__}/**/*.js' --write",
     "lint": "eslint . --fix --ext .js",
+    "precommit": "lint-staged",
     "build": "next build",
     "start": "next start",
     "static-build": "next build && next export",
@@ -33,10 +34,19 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.5.0",
     "eslint-plugin-react": "^7.7.0",
+    "husky": "^0.14.3",
     "jest": "^22.4.2",
+    "lint-staged": "^7.0.2",
+    "pre-push": "^0.1.1",
     "prettier": "^1.11.1"
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
