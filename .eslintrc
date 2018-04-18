@@ -7,7 +7,7 @@
     "jest": true,
     "browser": true
   },
-  "extends": ["airbnb", "plugin:react/recommended"],
+  "extends": ["airbnb", "prettier", "plugin:react/recommended"],
   "plugins": ["jest", "prettier", "react"],
   "parserOptions": {
     "ecmaVersion": 6,

@@ -1,4 +1,4 @@
-import { isNumeric } from './../utils/numberUtils';
+import { isNumeric } from "./../utils/numberUtils";
 
 const FREQUENCY = 12;
 
@@ -50,7 +50,7 @@ function calculateCompoundInterest(input) {
 function calculateOld(input) {
   const validatedInput = validateInput(input);
   if (validatedInput === {}) {
-    return { error: 'Input is not valid' };
+    return { error: "Input is not valid" };
   }
   const { years, startCapital, monthlyDeposit } = validatedInput;
   const returns = calculateCompoundInterest(validatedInput);
@@ -85,7 +85,7 @@ function calculatePerYearFn(input, currentYear, acc) {
 function calcReturnsPerYear(input) {
   const validatedInput = validateInput(input);
   if (Object.keys(validatedInput).length === 0) {
-    return { error: 'Input is not valid' };
+    return { error: "Input is not valid" };
   }
   const { startCapital, interestRate } = validatedInput;
   const newInput = {

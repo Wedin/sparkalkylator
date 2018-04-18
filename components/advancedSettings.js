@@ -8,8 +8,8 @@ export default class AdvancedSettings extends React.Component {
   //   onClick: PropTypes.func.isRequired
   // };
   // static defaultProps = {
-  //   className: '',
-  //   label: ''
+  //   className: "",
+  //   label: ""
   // };
 
   render() {
