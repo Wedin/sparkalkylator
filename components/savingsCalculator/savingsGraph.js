@@ -4,6 +4,11 @@ import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack, Vict
 import { localeRounded } from "../../utils/numberUtils";
 import formatCurrency from "../../utils/formatCurrency";
 
+const getYearsAxis = data => {
+  // Shorten when long range
+  data.map(v => v.year);
+};
+
 export default class extends React.Component {
   static propTypes = {
     startCapital: PropTypes.number,
@@ -40,11 +45,6 @@ export default class extends React.Component {
 
     const arr = Array(this.props.returnEachYear.length - 1).fill(0);
     return arr.map((_val, i) => ({ ...startObj, year: i + 1 }));
-  }
-
-  getYearsAxis(data) {
-    // Shorten when long range
-    return data.map(v => v.year);
   }
 
   render() {
@@ -88,7 +88,7 @@ export default class extends React.Component {
           }}
         >
           <VictoryAxis
-            tickValues={this.getYearsAxis(formattedData)}
+            tickValues={getYearsAxis(formattedData)}
             style={{
               axisLabel: { fontSize: 12 },
               tickLabels: { fontSize: 12, padding: 5, angle: -50 },

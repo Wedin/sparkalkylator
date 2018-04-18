@@ -38,10 +38,6 @@ export default class extends React.Component {
     this.calculateResult(true);
   }
 
-  setAdvanced() {
-    // TODO
-  }
-
   calculateResult(full) {
     const data = {
       startCapital: this.state.startCapital,

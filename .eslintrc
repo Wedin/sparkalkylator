@@ -17,17 +17,9 @@
     }
   },
   "rules": {
-    "no-mixed-operators": "off",
-    "comma-dangle": "off",
-    "prettier/prettier": "error",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prefer-stateless-function": "off",
-    "max-len": "off",
-    "object-curly-newline": "off",
-    "class-methods-use-this": "off",
-    "function-paren-newline": "off",
     "react/forbid-prop-types": ["warn", { "forbid": ["array", "object"] }],
-    "react/react-in-jsx-scope": "off",
-    "arrow-parens": "off"
+    "react/react-in-jsx-scope": "off"
   }
 }
