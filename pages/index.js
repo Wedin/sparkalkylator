@@ -7,7 +7,7 @@ export default class extends React.PureComponent {
   displayName = "Index";
   render() {
     return (
-      <Layout title="Sparkalkylatorn">
+      <Layout title="Sparkalkylatorn - räkna på ränta på ränta">
         <Intro />
         <SavingsCalculator />
       </Layout>

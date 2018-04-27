@@ -13,17 +13,18 @@ const layout = ({ children, title }) => (
     <div className="content">{children}</div>
 
     <Footer />
+    {/* Some style is important to override ant design  */}
     <style global jsx>
       {`
         body {
           background: white;
           margin: 0px;
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-          font-size: 16px;
+          font-size: 16px !important;
           color: #363636 !important;
         }
         a {
-          color: #0469effc !important;
+          color: #0469ef !important;
         }
         .page-wrapper {
           position: relative;

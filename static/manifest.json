@@ -1,0 +1,16 @@
+{
+    "short_name": "Sparkalkylatorn - ränta på ränta",
+    "name": "Sparkalkylatorn",
+    "start_url": "./",
+    "icons": [
+      {
+        "src": "/static/icon-128x128.png",
+        "sizes": "128x128",
+        "type": "image/png"
+      }
+    ],
+    "background_color": "#FAFAFA",
+    "theme_color": "#0469ef",
+    "display": "standalone",
+    "orientation": "portrait"
+  }

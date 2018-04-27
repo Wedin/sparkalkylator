@@ -5,7 +5,7 @@ export default class extends React.PureComponent {
   displayName = "about";
   render() {
     return (
-      <Layout title="Sparkalkylatorn">
+      <Layout title="Sparkalkylatorn - räkna på ränta på ränta">
         <div className="wrapper anim-1 fade-in">
           <h1>About stuff</h1>
           <p>some text here</p>
