@@ -15,8 +15,12 @@ export default class extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <link rel="stylesheet" href="https://unpkg.com/antd@3.3.3/dist/antd.min.css" />
-          <meta name="Description" content="Sparkalkylator för att beräkna ränta på ränta effekten. Se vad ett månadssparande kan ge för avkastning." />
+          {/* <link rel="stylesheet" href="https://unpkg.com/antd@3.3.3/dist/antd.min.css" /> */}
+          <link rel="stylesheet" href="static/antd.min.css" />
+          <meta
+            name="Description"
+            content="Sparkalkylator för att beräkna ränta på ränta effekten. Se vad ett månadssparande kan ge för avkastning."
+          />
           <meta name="theme-color" content="#0469ef" />
           <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
           <link rel="manifest" href="/static/manifest.json" />
