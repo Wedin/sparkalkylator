@@ -3,8 +3,7 @@ import Intro from "../components/intro";
 import Layout from "../components/layout";
 import SavingsCalculator from "../components/savingsCalculator/savingsCalculator";
 
-export default class extends React.PureComponent {
-  displayName = "Index";
+class Index extends React.PureComponent {
   render() {
     return (
       <Layout title="Sparkalkylatorn - räkna på ränta på ränta">
@@ -14,3 +13,5 @@ export default class extends React.PureComponent {
     );
   }
 }
+
+export default Index;

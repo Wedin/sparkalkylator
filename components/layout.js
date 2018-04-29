@@ -1,5 +1,6 @@
 import Head from "next/head";
 import PropTypes from "prop-types";
+import withServiceWorker from "../lib/withServiceWorker";
 import Header from "./header";
 import Footer from "../components/footer";
 
@@ -74,7 +75,7 @@ const layout = ({ children, title }) => (
   </div>
 );
 
-export default layout;
+export default withServiceWorker(layout);
 
 layout.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
