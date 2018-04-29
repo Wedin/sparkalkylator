@@ -6,7 +6,7 @@ export default class extends React.PureComponent {
   render() {
     return (
       <Layout title="Sparkalkylatorn - räkna på ränta på ränta">
-        <div className="wrapper anim-1 fade-in">
+        <div className="wrapper">
           <h1>About stuff</h1>
           <p>some text here</p>
         </div>
