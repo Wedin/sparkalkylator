@@ -1,7 +1,7 @@
 {
     "short_name": "Sparkalkylatorn - ränta på ränta",
     "name": "Sparkalkylatorn",
-    "start_url": ".",
+    "start_url": "/",
     "icons": [
       {
         "src": "/static/icon-128x128.png",
